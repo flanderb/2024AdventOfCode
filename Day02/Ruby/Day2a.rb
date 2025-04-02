@@ -17,7 +17,7 @@ class Day2
             line = report.chomp
             report = line.split
             report = report.map(&:to_i)
-            if report_safe?(report) then
+            if report_safe?(report) or fixed_by_problem_dampner?(report) then
                 safe_reports += 1
             end
         end
@@ -27,11 +27,8 @@ class Day2
     def report_safe?(report)
         # Any two adjacent levels differ by at least one and at most three.
         # The levels are either all increasing or all decreasing.
-        if (report_sorted?(report) and report_span_managable?(report)) == false
-            return fixed_by_problem_dampner?(report)
-        else
-            return true
-        end
+        return (report_sorted?(report) and report_span_managable?(report))
+
     end
 
     def report_sorted?(report)
@@ -56,7 +53,15 @@ class Day2
     end
 
     def fixed_by_problem_dampner?(report)
-        
+        # take out elements one by one and test
+        # once a removed element fixes the report
+        # Return true
+        report.each_index do |report_index|
+            if report_safe?(report.reject.with_index{|v, i| i == report_index })
+                return true
+            end
+        end
+        return false
     end
     
 
