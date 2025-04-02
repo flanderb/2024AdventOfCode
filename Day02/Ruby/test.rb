@@ -58,9 +58,9 @@ class Day2Test < Minitest::Test
         report2 = [1,3,2,4,5] #can fix
         report3 = [1,2,2,4,5] #can fix
         
-        assert fixed_by_problem_dampner?(report1) == true
-        assert fixed_by_problem_dampner?(report2) == false
-        assert fixed_by_problem_dampner?(report3) == false
+        assert reports.fixed_by_problem_dampner?(report1) == false
+        assert reports.fixed_by_problem_dampner?(report2) == true
+        assert reports.fixed_by_problem_dampner?(report3) == true
 
     end
 
