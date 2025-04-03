@@ -15,7 +15,7 @@ class Day03
     def find_muls(input)
         muls_array = Array.new
         File.foreach(input) do |line|
-            muls_array += line.scan(/mul\(\d+,\d+\)/)
+            muls_array += line.scan(/mul\(\d+,\d+\)|do\(\)|don't\(\)/)
         end
         return muls_array
     end
@@ -30,13 +30,18 @@ class Day03
 
     def eval_input(array_of_muls)
         total = 0
+        do_it = true
         array_of_muls.each do |muls|
-            total += eval_muls(muls)
+
+            if muls == "don't()" then
+                do_it = false
+            elsif muls == "do()" then
+                do_it = true
+            elsif do_it
+                p muls
+                total += eval_muls(muls)
+            end
         end
         return total
     end
-
-
-
-
 end
