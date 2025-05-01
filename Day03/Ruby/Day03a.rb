@@ -8,7 +8,6 @@ class Day03
     def initialize(input)
         @file = input
         @array = find_muls(input)
-        p @array
         @total = eval_input(@array)
     end
 
