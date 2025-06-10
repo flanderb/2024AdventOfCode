@@ -1,6 +1,6 @@
 require 'matrix'
 
-class Day04
+class Day04a
     attr_accessor :file, :word_search_matrix, :word, :number_of_words_found
     # Read in file
     # Parse file into two arrays

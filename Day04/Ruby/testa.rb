@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require_relative 'Day04a'
 
-class Day03Test < Minitest::Test
+class Day04Test < Minitest::Test
 
     def setup
         @word_search = Day04.new("XMAS","../test_input.txt")
